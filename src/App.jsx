@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import './App.css'
 import dove from './dove.jpg'
+import generate from './generation-logic/generate';
 
 const Container = styled.div`
   height: 100vh;
@@ -59,13 +60,27 @@ const Subtitle = styled.div`
 
 const Main = styled.main`
   display: flex;
-  align-items: start;
-  justify-content: center;
-  width: 100vw;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
+  width: 95vw;
   flex: 1 0 auto;
 `
 
+const TaxTitle = styled.h2`
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 10px;
+`
+
+const Article = styled.p`
+  text-align: left;
+  font-size: 14px;
+  margin: 8px 0;
+`
+
 const Button = styled.button`
+  align-self: center;
   background-color: white;
   border: 3px solid black;
   border-radius: 5px;
@@ -104,6 +119,21 @@ function App(props) {
     // collectVisit()
   }, [])
 
+  /*
+   * Format:
+   *  sentences[n]          - value for sentence `n`
+   *  sentences['meta'][n]  - additional data for sentence `n`
+   */
+  const [sentences, setSentences] = useState(null)
+  const [buttonText, setButtonText] = useState("Generuj")
+
+  const buttonAction = () => {
+    setSentences(generate())
+    setButtonText("Generuj nowe")
+    document.getElementById('topBar').scrollIntoView()
+    // collectEvent()
+  }
+
   const dateOpts = {
     day: 'numeric',
     month: 'long',
@@ -115,7 +145,7 @@ function App(props) {
   return (
     <Container className="App">
       <Header>
-        <TopBar>
+        <TopBar id="topBar">
           <div>Dziennik Ustaw</div>
           <div>Poz. 2135</div>
         </TopBar>
@@ -124,7 +154,16 @@ function App(props) {
         <Subtitle>z dnia {date} r.</Subtitle>
       </Header>
       <Main>
-        <Button>Generuj</Button>
+        {sentences && (
+          <>
+          <TaxTitle>{sentences['title']}</TaxTitle>
+          <Article><b>Art. 1.</b> {sentences['art1']}.</Article>
+          <Article><b>Art. 2.</b> (uzasadnienie)</Article>
+          <Article><b>Art. 3.</b> {sentences['art3']}.</Article>
+          <Article><b>Art. 4.</b> Ustawa wchodzi w życie z dniem {date} r.</Article>
+          </>
+        )}
+        <Button onClick={buttonAction}>{buttonText}</Button>
       </Main>
       <Footer>
         <FooterText>
