@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://dzierzanowski.github.io/tax-generator/static/css/main.1206712a.chunk.css",
-    "main.js": "https://dzierzanowski.github.io/tax-generator/static/js/main.b61480a4.chunk.js",
-    "main.js.map": "https://dzierzanowski.github.io/tax-generator/static/js/main.b61480a4.chunk.js.map",
+    "main.js": "https://dzierzanowski.github.io/tax-generator/static/js/main.da417fa8.chunk.js",
+    "main.js.map": "https://dzierzanowski.github.io/tax-generator/static/js/main.da417fa8.chunk.js.map",
     "runtime-main.js": "https://dzierzanowski.github.io/tax-generator/static/js/runtime-main.7a59c6c5.js",
     "runtime-main.js.map": "https://dzierzanowski.github.io/tax-generator/static/js/runtime-main.7a59c6c5.js.map",
     "static/js/2.49f72695.chunk.js": "https://dzierzanowski.github.io/tax-generator/static/js/2.49f72695.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.7a59c6c5.js",
     "static/js/2.49f72695.chunk.js",
     "static/css/main.1206712a.chunk.css",
-    "static/js/main.b61480a4.chunk.js"
+    "static/js/main.da417fa8.chunk.js"
   ]
 }
